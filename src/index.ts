@@ -8,9 +8,12 @@ const sio = io(server);
 
 
 sio.on('connection', (socket) => {
-  console.log('a user connected');
+  console.log(`user with id ${socket.id} connected`);
+  socket.on('disconnect', () => {
+    console.log(`user with id ${socket.id} disconnected`);
+  });
 });
 
-server.listen(3000, () => {
-  console.log('listening on 3000');
+server.listen(5000, () => {
+  console.log('listening on 5000');
 });
